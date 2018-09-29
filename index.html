@@ -1,0 +1,58 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <span v-bind:title="message">
+        Hoover your mouse at..
+    </span>
+</div>
+<div id="app2">
+    <input type="submit" v-on:click="app2.seen = true" />
+    <span v-if="seen">Now u see me!</span>
+</div>
+
+<div id="app3">
+    <li v-for="fruit in fruits">{{ fruit.text }}</li>
+</div>
+
+<div id="app4">
+
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'You loaded this page at: ' + Date().toLocaleString()
+        }
+    })
+
+    var app2 = new Vue({
+        el: '#app2',
+        data: {
+            seen: false
+        }
+    })
+
+    var app3 = new Vue({
+        el: '#app3',
+        data: {
+            fruits: [
+                {text: "apple"},
+                {text: "pineapple"},
+                {text: "banana"}
+            ]
+        }
+    })
+
+    var app4 = new Vue({
+        el: '#app4',
+        data: {
+
+        }
+    })
+</script>
+</body>
+</html>
