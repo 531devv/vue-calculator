@@ -1,58 +1,94 @@
 <html>
-<head>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-</head>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
 
-<body>
-<div id="app">
-    <span v-bind:title="message">
-        Hoover your mouse at..
-    </span>
-</div>
-<div id="app2">
-    <input type="submit" v-on:click="app2.seen = true" />
-    <span v-if="seen">Now u see me!</span>
-</div>
+            .button{
+                width: 150px;
+                height: 50px;
+                font-size: 25px;
+                padding: 2px;
+            }
 
-<div id="app3">
-    <li v-for="fruit in fruits">{{ fruit.text }}</li>
-</div>
+            .view{
+                height: 50px;
+                width: 608px;
+                font-size: 25px;
+            }
+        </style>
+    </head>
 
-<div id="app4">
+    <body>
+        <div id="calculator">
+            <form name="form">
+                <input id="textview" class="view" v-model="current">
+            </form>
+            <table>
+                <tr>
+                    <td><input class="button" type="button" value="C" v-on:click="clear()"> </td>
+                    <td><input class="button" type="button" value="%" v-on:click="percent()"> </td>
+                    <td><input class="button" type="button" value="/" v-on:click="divide()"> </td>
+                    <td><input class="button" type="button" value="x" v-on:click="times()"> </td>
+                </tr>
+                <tr>
+                    <td><input class="button" type="button" value="7" v-on:click="append('7')"> </td>
+                    <td><input class="button" type="button" value="8" v-on:click="append('8')"> </td>
+                    <td><input class="button" type="button" value="9" v-on:click="append('9')"> </td>
+                    <td><input class="button" type="button" value="+" v-on:click="plus()"> </td>
+                </tr>
+                <tr>
+                    <td><input class="button" type="button" value="4" v-on:click="append('4')"> </td>
+                    <td><input class="button" type="button" value="5" v-on:click="append('5')"> </td>
+                    <td><input class="button" type="button" value="6" v-on:click="append('6')"> </td>
+                    <td><input class="button" type="button" value="-" v-on:click="minus()"> </td>
+                </tr>
+                <tr>
+                    <td><input class="button" type="button" value="1" v-on:click="append('1')"> </td>
+                    <td><input class="button" type="button" value="2" v-on:click="append('2')"> </td>
+                    <td><input class="button" type="button" value="3" v-on:click="append('3')"> </td>
+                    <td><input class="button" type="button" value="=" v-on:click="append('7')"> </td>
+                </tr>
+            </table>
+        </div>
+    <script>
+        var app = new Vue({
+            el: '#calculator',
+            data: {
+                current: '',
+                operator: null
+            },
+            methods: {
+                percent() {
+                    this.current = `${parseFloat(this.current) / 100}`
+                },
+                clear() {
+                    this.current = ''
+                },
+                append(number) {
+                    this.current = this.current + number;
+                },
+                divide() {
+                    this.operator = (a, b) => (a / b);
+                },
+                times() {
+                    this.operator = (a, b) => (a * b);
+                },
+                minus() {
+                    this.operator = (a, b) => (a - b);
+                },
+                plus() {
+                    this.operator = (a, b) => (a + b);
+                },
 
-</div>
-<script>
-    var app = new Vue({
-        el: '#app',
-        data: {
-            message: 'You loaded this page at: ' + Date().toLocaleString()
-        }
-    })
+                equal() {
 
-    var app2 = new Vue({
-        el: '#app2',
-        data: {
-            seen: false
-        }
-    })
-
-    var app3 = new Vue({
-        el: '#app3',
-        data: {
-            fruits: [
-                {text: "apple"},
-                {text: "pineapple"},
-                {text: "banana"}
-            ]
-        }
-    })
-
-    var app4 = new Vue({
-        el: '#app4',
-        data: {
-
-        }
-    })
-</script>
-</body>
+                }
+            }
+        })
+    </script>
+    </body>
 </html>
