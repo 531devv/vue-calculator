@@ -3,7 +3,7 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
         <style>
             *{
-                padding: 0;
+                padding: inherit;
                 margin: 0;
             }
 
@@ -11,12 +11,17 @@
                 width: 150px;
                 height: 50px;
                 font-size: 25px;
-                padding: 2px;
             }
 
             .view{
                 height: 50px;
                 width: 608px;
+                font-size: 25px;
+            }
+
+            .large-button{
+                width: 454px;
+                height: 50px;
                 font-size: 25px;
             }
         </style>
@@ -50,7 +55,13 @@
                     <td><input class="button" type="button" value="1" v-on:click="append('1')"> </td>
                     <td><input class="button" type="button" value="2" v-on:click="append('2')"> </td>
                     <td><input class="button" type="button" value="3" v-on:click="append('3')"> </td>
-                    <td><input class="button" type="button" value="=" v-on:click="append('7')"> </td>
+                    <td><input class="button" type="button" value="." v-on:click="dot()"> </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td><input class="large-button" type="button" value="0" v-on:click="append('0')"> </td>
+                    <td><input class="button" type="button" value="=" v-on:click="equal()"> </td>
                 </tr>
             </table>
         </div>
@@ -58,34 +69,56 @@
         var app = new Vue({
             el: '#calculator',
             data: {
+                previous: null,
                 current: '',
-                operator: null
+                operator: null,
+                operatorClicked: false
             },
             methods: {
                 percent() {
-                    this.current = `${parseFloat(this.current) / 100}`
+                    this.current = parseFloat(this.current / 100);
                 },
                 clear() {
                     this.current = ''
                 },
                 append(number) {
+                    if(this.operatorClicked){
+                        this.current = '';
+                        this.operatorClicked = false;
+                    }
+                    if(this.current === '0'){
+                        this.current = '';
+                    }
                     this.current = this.current + number;
                 },
+                setPrevious(){
+                    this.previous = this.current;
+                    this.operatorClicked = true;
+                },
                 divide() {
-                    this.operator = (a, b) => (a / b);
+                    this.operator = (a, b) => a / b;
+                    this.setPrevious();
                 },
                 times() {
-                    this.operator = (a, b) => (a * b);
+                    this.operator = (a, b) => a * b;
+                    this.setPrevious();
                 },
                 minus() {
-                    this.operator = (a, b) => (a - b);
+                    this.operator = (a, b) => a - b;
+                    this.setPrevious();
                 },
                 plus() {
-                    this.operator = (a, b) => (a + b);
+                    this.operator = (a, b) => a + b;
+                    this.setPrevious();
                 },
-
+                dot() {
+                    if(this.current.indexOf('.') === '-1'){
+                        this.append('.');
+                    }
+                },
                 equal() {
-
+                    this.current = this.operator(parseFloat(this.current), parseFloat(this.previous))
+                    this.previous = null;
                 }
             }
         })
