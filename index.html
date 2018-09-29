@@ -6,39 +6,39 @@
 
     <body>
         <div id="calculator">
-            <form name="form">
-                <input id="textview" class="view" v-model="current">
-            </form>
-            <table>
+            <table style="margin: auto; margin-top: 10%;">
+                <td><input id="textview" class="view" v-model="current"></td>
+            </table>
+            <table style="margin: auto;">
                 <tr>
                     <td><input class="button" type="button" value="C" v-on:click="clear()"> </td>
                     <td><input class="button" type="button" value="%" v-on:click="percent()"> </td>
                     <td><input class="button" type="button" value="/" v-on:click="divide()"> </td>
-                    <td><input class="button" type="button" value="x" v-on:click="times()"> </td>
+                    <td><input class="button orange" type="button" value="x" v-on:click="times()"> </td>
                 </tr>
                 <tr>
                     <td><input class="button" type="button" value="7" v-on:click="append('7')"> </td>
                     <td><input class="button" type="button" value="8" v-on:click="append('8')"> </td>
                     <td><input class="button" type="button" value="9" v-on:click="append('9')"> </td>
-                    <td><input class="button" type="button" value="+" v-on:click="plus()"> </td>
+                    <td><input class="button orange" type="button" value="+" v-on:click="plus()"> </td>
                 </tr>
                 <tr>
                     <td><input class="button" type="button" value="4" v-on:click="append('4')"> </td>
                     <td><input class="button" type="button" value="5" v-on:click="append('5')"> </td>
                     <td><input class="button" type="button" value="6" v-on:click="append('6')"> </td>
-                    <td><input class="button" type="button" value="-" v-on:click="minus()"> </td>
+                    <td><input class="button orange" type="button" value="-" v-on:click="minus()"> </td>
                 </tr>
                 <tr>
                     <td><input class="button" type="button" value="1" v-on:click="append('1')"> </td>
                     <td><input class="button" type="button" value="2" v-on:click="append('2')"> </td>
                     <td><input class="button" type="button" value="3" v-on:click="append('3')"> </td>
-                    <td><input class="button" type="button" value="." v-on:click="dot()"> </td>
+                    <td><input class="button orange" type="button" value="." v-on:click="dot()"> </td>
                 </tr>
             </table>
-            <table>
+            <table style="margin: auto;">
                 <tr>
                     <td><input class="large-button" type="button" value="0" v-on:click="append('0')"> </td>
-                    <td><input class="button" type="button" value="=" v-on:click="equal()"> </td>
+                    <td><input class="button darkorange" type="button" value="=" v-on:click="equal()"> </td>
                 </tr>
             </table>
         </div>

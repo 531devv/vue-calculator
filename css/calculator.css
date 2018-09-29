@@ -1,3 +1,11 @@
+html{
+    background: url('../img/107595.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 *{
     padding: inherit;
     margin: 0;
@@ -11,12 +19,36 @@
 
 .view{
     height: 50px;
-    width: 608px;
-    font-size: 25px;
+    width: 600px;
+    font-size: 35px;
+    text-space: left 20px;
+    background-color: rgba(0,0,0,0.47);
+    color: white;
+    text-align: center;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.darkorange{
+    background-color: darkorange;
+}
+
+.darkblue{
+    background-color: rgba(0, 0, 0, 0.44);
 }
 
 .large-button{
-    width: 454px;
+    width: 450px;
     height: 50px;
     font-size: 25px;
+}
+
+input {
+    border-width: 0;
+}
+
+table{
+    border-spacing: 0;
 }

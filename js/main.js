@@ -44,7 +44,7 @@ var app = new Vue({
             this.setPrevious();
         },
         dot() {
-            if(this.current.indexOf('.') === '-1'){
+            if(this.current.indexOf('.') === -1){
                 this.append('.');
             }
         },
