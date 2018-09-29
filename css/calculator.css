@@ -1,0 +1,22 @@
+*{
+    padding: inherit;
+    margin: 0;
+}
+
+.button{
+    width: 150px;
+    height: 50px;
+    font-size: 25px;
+}
+
+.view{
+    height: 50px;
+    width: 608px;
+    font-size: 25px;
+}
+
+.large-button{
+    width: 454px;
+    height: 50px;
+    font-size: 25px;
+}
